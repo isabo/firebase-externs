@@ -1,0 +1,19 @@
+{
+  "name": "firebase-externs",
+  "version": "0.0.0",
+  "description": "Google Closure Compiler Extern Definitions for Firebase",
+  "main": "firebase-externs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isabo/firebase-externs.git"
+  },
+  "author": "Itzy Sabo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/isabo/firebase-externs/issues"
+  },
+  "homepage": "https://github.com/isabo/firebase-externs"
+}
