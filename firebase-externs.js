@@ -298,6 +298,33 @@ Firebase.Query = function () {};
 
 
 /**
+ * @param {string} eventType
+ * @param {!Firebase.EventCallback} callback
+ * @param {!function(!Firebase.Error)=} cancelCallback
+ * @param {!Object=} context
+ * @return {!function(!Firebase.DataSnapshot, ?string=)}
+ */
+Firebase.Query.prototype.on = function (eventType, callback, cancelCallback, context) {};
+
+
+/**
+ * @param {string=} eventType
+ * @param {!Firebase.EventCallback=} callback
+ * @param {!Object=} context
+ */
+Firebase.Query.prototype.off = function (eventType, callback, context) {};
+
+
+/**
+ * @param {string} eventType
+ * @param {!Firebase.EventCallback} successCallback
+ * @param {!function(!Firebase.Error)=} failureCallback
+ * @param {!Object=} context
+ */
+Firebase.Query.prototype.once = function (eventType, successCallback, failureCallback, context) {};
+
+
+/**
  * @param {string} key
  * @return {!Firebase.Query}
  */
