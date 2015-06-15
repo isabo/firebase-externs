@@ -477,14 +477,14 @@ Firebase.DataSnapshot.prototype.val = function () {};
 
 /**
  * @param {string} childPath
- * @return {Firebase.DataSnapshot}
+ * @return {!Firebase.DataSnapshot}
  * @nosideeffects
  */
 Firebase.DataSnapshot.prototype.child = function (childPath) {};
 
 
 /**
- * @param {!function(Firebase.DataSnapshot):(boolean|undefined)} childAction
+ * @param {!function(!Firebase.DataSnapshot):(boolean|undefined)} childAction
  * @return {(boolean|undefined)}
  */
 Firebase.DataSnapshot.prototype.forEach = function (childAction) {};
