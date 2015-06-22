@@ -51,13 +51,13 @@ angularFire.FirebaseObject.prototype.$value;
 
 
 /**
- * @return {!angular.$q.Promise<!angularFire.Firebase>}
+ * @return {!angular.$q.Promise.<!angularFire.Firebase>}
  */
 angularFire.FirebaseObject.prototype.$remove = function () {};
 
 
 /**
- * @return {!angular.$q.Promise<!angularFire.Firebase>}
+ * @return {!angular.$q.Promise.<!angularFire.Firebase>}
  */
 angularFire.FirebaseObject.prototype.$save = function () {};
 
@@ -65,7 +65,7 @@ angularFire.FirebaseObject.prototype.$save = function () {};
 /**
  * @param {!function(!angularFire.FirebaseObject)=} resolve
  * @param {!function(!Firebase.Error)=} reject
- * @return {!angular.$q.Promise<!angularFire.FirebaseObject>}
+ * @return {!angular.$q.Promise.<!angularFire.FirebaseObject>}
  */
 angularFire.FirebaseObject.prototype.$loaded = function (resolve, reject) {};
 
@@ -79,7 +79,7 @@ angularFire.FirebaseObject.prototype.$ref = function () {};
 /**
  * @param {!angular.Scope} scope
  * @param {string} varName
- * @return {!angular.$q.Promise<!function()>}
+ * @return {!angular.$q.Promise.<!function()>}
  */
 angularFire.FirebaseObject.prototype.$bindTo = function (scope, varName) {};
 
@@ -123,7 +123,7 @@ angularFire.FirebaseObject.prototype.toJson = function () {};
 
 
 /**
- * @type {!Object<string,Firebase.Value>}
+ * @type {!Object.<string,Firebase.Value>}
  */
 angularFire.FirebaseObject.prototype.$$defaults;
 
@@ -153,21 +153,21 @@ angularFire.FirebaseArray = function () {};
 
 /**
  * @param {!Firebase.Value} newData
- * @return {!angular.$q.Promise<!Firebase>}
+ * @return {!angular.$q.Promise.<!Firebase>}
  */
 angularFire.FirebaseArray.prototype.$add = function (newData) {};
 
 
 /**
  * @param {!angularFire.FirebaseObject|number} recordOrIndex
- * @return {!angular.$q.Promise<!Firebase>}
+ * @return {!angular.$q.Promise.<!Firebase>}
  */
 angularFire.FirebaseArray.prototype.$remove = function (recordOrIndex) {};
 
 
 /**
  * @param {!angularFire.FirebaseObject|number} recordOrIndex
- * @return {!angular.$q.Promise<!Firebase>}
+ * @return {!angular.$q.Promise.<!Firebase>}
  */
 angularFire.FirebaseArray.prototype.$save = function (recordOrIndex) {};
 
@@ -196,7 +196,7 @@ angularFire.FirebaseArray.prototype.$indexFor = function (key) {};
 /**
  * @param {!function(!angularFire.FirebaseArray)=} resolve
  * @param {!function(!Firebase.Error)=} reject
- * @return {!angular.$q.Promise<!angularFire.FirebaseArray>}
+ * @return {!angular.$q.Promise.<!angularFire.FirebaseArray>}
  */
 angularFire.FirebaseArray.prototype.$loaded = function (resolve, reject) {};
 
@@ -276,7 +276,7 @@ angularFire.FirebaseArray.prototype.$$process = function (event, key, prevChild)
 
 
 /**
- * @type {!Object<string,Firebase.Value>}
+ * @type {!Object.<string,Firebase.Value>}
  */
 angularFire.FirebaseArray.prototype.$$defaults;
 
@@ -299,7 +299,7 @@ angularFire.FirebaseAuth = function () {};
 /**
  * @param {string} authToken
  * @param {!Object=} options
- * @return {!angular.$q.Promise<!Firebase.AuthCallbackData, !Firebase.Error>}
+ * @return {!angular.$q.Promise.<!Firebase.AuthCallbackData, !Firebase.Error>}
  */
 angularFire.FirebaseAuth.prototype.$authWithCustomToken = function (authToken, options) {};
 
@@ -307,7 +307,7 @@ angularFire.FirebaseAuth.prototype.$authWithCustomToken = function (authToken, o
 /**
  * @param {!Firebase.AuthPasswordCredentials} credentials
  * @param {!Object=} options
- * @return {!angular.$q.Promise<!Firebase.AuthCallbackData, !Firebase.Error>}
+ * @return {!angular.$q.Promise.<!Firebase.AuthCallbackData, !Firebase.Error>}
  */
 angularFire.FirebaseAuth.prototype.$authWithPassword = function (credentials, options) {};
 
@@ -315,7 +315,7 @@ angularFire.FirebaseAuth.prototype.$authWithPassword = function (credentials, op
 /**
  * @param {string} provider
  * @param {!Object=} options
- * @return {!angular.$q.Promise<!Firebase.AuthCallbackData, !Firebase.Error>}
+ * @return {!angular.$q.Promise.<!Firebase.AuthCallbackData, !Firebase.Error>}
  */
 angularFire.FirebaseAuth.prototype.$authWithOAuthPopup = function (provider, options) {};
 
@@ -323,7 +323,7 @@ angularFire.FirebaseAuth.prototype.$authWithOAuthPopup = function (provider, opt
 /**
  * @param {string} provider
  * @param {!Object=} options
- * @return {!angular.$q.Promise<!Firebase.AuthCallbackData, !Firebase.Error>}
+ * @return {!angular.$q.Promise.<!Firebase.AuthCallbackData, !Firebase.Error>}
  */
 angularFire.FirebaseAuth.prototype.$authWithOAuthRedirect = function (provider, options) {};
 
@@ -332,7 +332,7 @@ angularFire.FirebaseAuth.prototype.$authWithOAuthRedirect = function (provider, 
  * @param {string} provider
  * @param {string|!Object} credentials
  * @param {!Object=} options
- * @return {!angular.$q.Promise<!Firebase.AuthCallbackData, !Firebase.Error>}
+ * @return {!angular.$q.Promise.<!Firebase.AuthCallbackData, !Firebase.Error>}
  */
 angularFire.FirebaseAuth.prototype.$authWithOAuthToken = function (provider, credentials, options) {};
 
@@ -359,47 +359,47 @@ angularFire.FirebaseAuth.prototype.$unauth = function () {};
 
 
 /**
- * @return {!angular.$q.Promise<!Firebase.AuthCallbackData, !Firebase.Error>}
+ * @return {!angular.$q.Promise.<!Firebase.AuthCallbackData, !Firebase.Error>}
  */
 angularFire.FirebaseAuth.prototype.$waitForAuth = function () {};
 
 
 /**
- * @return {!angular.$q.Promise<!Firebase.AuthCallbackData, !Firebase.Error>}
+ * @return {!angular.$q.Promise.<!Firebase.AuthCallbackData, !Firebase.Error>}
  */
 angularFire.FirebaseAuth.prototype.$requireAuth = function () {};
 
 
 /**
  * @param {!Firebase.AuthPasswordCredentials} credentials
- * @return {!angular.$q.Promise<!{uid:string}, !Firebase.Error>}
+ * @return {!angular.$q.Promise.<!{uid:string}, !Firebase.Error>}
  */
 angularFire.FirebaseAuth.prototype.createUser = function (credentials) {};
 
 
 /**
  * @param {!{email:string, oldPassword:string, newPassword:string}} credentials
- * @return {!angular.$q.Promise<null, !Firebase.Error>}
+ * @return {!angular.$q.Promise.<null, !Firebase.Error>}
  */
 angularFire.FirebaseAuth.prototype.changePassword = function (credentials) {};
 
 
 /**
  * @param {!{oldEmail:string, password:string, newEmail:string}} credentials
- * @return {!angular.$q.Promise<null, !Firebase.Error>}
+ * @return {!angular.$q.Promise.<null, !Firebase.Error>}
  */
 angularFire.FirebaseAuth.prototype.changeEmail = function (credentials) {};
 
 
 /**
  * @param {!Firebase.AuthPasswordCredentials} credentials
- * @return {!angular.$q.Promise<null, !Firebase.Error>}
+ * @return {!angular.$q.Promise.<null, !Firebase.Error>}
  */
 angularFire.FirebaseAuth.prototype.removeUser = function (credentials) {};
 
 
 /**
  * @param {!{email:string}} credentials
- * @return {!angular.$q.Promise<null, !Firebase.Error>}
+ * @return {!angular.$q.Promise.<null, !Firebase.Error>}
  */
 angularFire.FirebaseAuth.prototype.resetPassword = function (credentials) {};

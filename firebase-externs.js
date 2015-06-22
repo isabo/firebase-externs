@@ -141,7 +141,7 @@ Firebase.prototype.set = function (value, onComplete) {};
 
 
 /**
- * @param {!Object<string, Firebase.Value>} value
+ * @param {!Object.<string, Firebase.Value>} value
  * @param {!function(Firebase.Error)=} onComplete
  */
 Firebase.prototype.update = function (value, onComplete) {};
@@ -417,7 +417,7 @@ Firebase.OnDisconnect.prototype.set = function (value, onComplete) {};
 
 
 /**
- * @param {!Object<string, Firebase.Value>} value
+ * @param {!Object.<string, Firebase.Value>} value
  * @param {!function(Firebase.Error)=} onComplete
  */
 Firebase.OnDisconnect.prototype.update = function (value, onComplete) {};
