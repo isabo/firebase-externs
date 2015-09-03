@@ -51,13 +51,13 @@ angularFire.FirebaseObject.prototype.$value;
 
 
 /**
- * @return {!angular.$q.Promise.<!angularFire.Firebase>}
+ * @return {!angular.$q.Promise.<!angularFire.FirebaseObject>}
  */
 angularFire.FirebaseObject.prototype.$remove = function () {};
 
 
 /**
- * @return {!angular.$q.Promise.<!angularFire.Firebase>}
+ * @return {!angular.$q.Promise.<!angularFire.FirebaseObject>}
  */
 angularFire.FirebaseObject.prototype.$save = function () {};
 
