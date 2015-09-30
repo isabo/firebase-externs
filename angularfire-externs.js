@@ -374,32 +374,32 @@ angularFire.FirebaseAuth.prototype.$requireAuth = function () {};
  * @param {!Firebase.AuthPasswordCredentials} credentials
  * @return {!angular.$q.Promise.<!{uid:string}, !Firebase.Error>}
  */
-angularFire.FirebaseAuth.prototype.createUser = function (credentials) {};
+angularFire.FirebaseAuth.prototype.$createUser = function (credentials) {};
 
 
 /**
  * @param {!{email:string, oldPassword:string, newPassword:string}} credentials
  * @return {!angular.$q.Promise.<null, !Firebase.Error>}
  */
-angularFire.FirebaseAuth.prototype.changePassword = function (credentials) {};
+angularFire.FirebaseAuth.prototype.$changePassword = function (credentials) {};
 
 
 /**
  * @param {!{oldEmail:string, password:string, newEmail:string}} credentials
  * @return {!angular.$q.Promise.<null, !Firebase.Error>}
  */
-angularFire.FirebaseAuth.prototype.changeEmail = function (credentials) {};
+angularFire.FirebaseAuth.prototype.$changeEmail = function (credentials) {};
 
 
 /**
  * @param {!Firebase.AuthPasswordCredentials} credentials
  * @return {!angular.$q.Promise.<null, !Firebase.Error>}
  */
-angularFire.FirebaseAuth.prototype.removeUser = function (credentials) {};
+angularFire.FirebaseAuth.prototype.$removeUser = function (credentials) {};
 
 
 /**
  * @param {!{email:string}} credentials
  * @return {!angular.$q.Promise.<null, !Firebase.Error>}
  */
-angularFire.FirebaseAuth.prototype.resetPassword = function (credentials) {};
+angularFire.FirebaseAuth.prototype.$resetPassword = function (credentials) {};
