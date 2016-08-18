@@ -284,7 +284,7 @@ angularFire.FirebaseArray.prototype.$$defaults;
 
 
 /**
- * @typedef {function(!Firebase):!angularFire.FirebaseAuth}
+ * @typedef {function():!angularFire.FirebaseAuth}
  */
 angularFire.$firebaseAuth;
 
@@ -295,111 +295,142 @@ angularFire.$firebaseAuth;
  */
 angularFire.FirebaseAuth = function () {};
 
-
 /**
- * @param {string} authToken
- * @param {!Object=} options
- * @return {!angular.$q.Promise.<!Firebase.AuthCallbackData, !Firebase.Error>}
+ * Authenticates the Firebase reference with a custom authentication token.
+ *
+ * @param {string} authToken An authentication token or a Firebase Secret. A Firebase Secret
+ * should only be used for authenticating a server process and provides full read / write
+ * access to the entire Firebase.
+ * @return {!angular.$q.Promise<Object>} A promise fulfilled with an object containing authentication data.
  */
-angularFire.FirebaseAuth.prototype.$authWithCustomToken = function (authToken, options) {};
-
+angularFire.FirebaseAuth.prototype.$signInWithCustomToken = function(authToken) {};
 
 /**
- * @param {!Firebase.AuthPasswordCredentials} credentials
- * @param {!Object=} options
- * @return {!angular.$q.Promise.<!Firebase.AuthCallbackData, !Firebase.Error>}
+ * Authenticates the Firebase reference anonymously.
+ *
+ * @return {!angular.$q.Promise<Object>} A promise fulfilled with an object containing authentication data.
  */
-angularFire.FirebaseAuth.prototype.$authWithPassword = function (credentials, options) {};
-
+angularFire.FirebaseAuth.prototype.$signInAnonymously = function() {};
 
 /**
- * @param {string} provider
- * @param {!Object=} options
- * @return {!angular.$q.Promise.<!Firebase.AuthCallbackData, !Firebase.Error>}
+ * Authenticates the Firebase reference with an email/password user.
+ *
+ * @param {string} email An email address for the new user.
+ * @param {string} password A password for the new email.
+ * @return {!angular.$q.Promise<Object>} A promise fulfilled with an object containing authentication data.
  */
-angularFire.FirebaseAuth.prototype.$authWithOAuthPopup = function (provider, options) {};
-
+angularFire.FirebaseAuth.prototype.$signInWithEmailAndPassword = function(email, password) {};
 
 /**
- * @param {string} provider
- * @param {!Object=} options
- * @return {!angular.$q.Promise.<!Firebase.AuthCallbackData, !Firebase.Error>}
+ * Authenticates the Firebase reference with the OAuth popup flow.
+ *
+ * @param {Object|string} provider A firebase.auth.AuthProvider or a unique provider ID like 'facebook'.
+ * @return {!angular.$q.Promise<Object>} A promise fulfilled with an object containing authentication data.
  */
-angularFire.FirebaseAuth.prototype.$authWithOAuthRedirect = function (provider, options) {};
-
+angularFire.FirebaseAuth.prototype.$signInWithPopup = function(provider) {};
 
 /**
- * @param {string} provider
- * @param {string|!Object} credentials
- * @param {!Object=} options
- * @return {!angular.$q.Promise.<!Firebase.AuthCallbackData, !Firebase.Error>}
+ * Authenticates the Firebase reference with the OAuth redirect flow.
+ *
+ * @param {Object|string} provider A firebase.auth.AuthProvider or a unique provider ID like 'facebook'.
+ * @return {!angular.$q.Promise<Object>} A promise fulfilled with an object containing authentication data.
  */
-angularFire.FirebaseAuth.prototype.$authWithOAuthToken = function (provider, credentials, options) {};
-
+angularFire.FirebaseAuth.prototype.$signInWithRedirect = function(provider) {};
 
 /**
- * @return {Firebase.AuthCallbackData}
+ * Authenticates the Firebase reference with an OAuth token.
+ *
+ * @param {firebase.auth.AuthCredential} credential The Firebase credential.
+ * @return {!angular.$q.Promise<Object>} A promise fulfilled with an object containing authentication data.
+ */
+angularFire.FirebaseAuth.prototype.$signInWithCredential = function(credential) {};
+
+/**
+ * Unauthenticates the Firebase reference.
+ */
+angularFire.FirebaseAuth.prototype.$signOut = function() {};
+
+/**
+ * Asynchronously fires the provided callback with the current authentication data every time
+ * the authentication data changes. It also fires as soon as the authentication data is
+ * retrieved from the server.
+ *
+ * @param {function()} callback A callback that fires when the client's authenticate state
+ * changes. If authenticated, the callback will be passed an object containing authentication
+ * data according to the provider used to authenticate. Otherwise, it will be passed null.
+ * @param {string} [context] If provided, this object will be used as this when calling your
+ * callback.
+ * @return {function()} A promised fulfilled with a function which can be used to
+ * deregister the provided callback.
+ */
+angularFire.FirebaseAuth.prototype.$onAuthStateChanged = function(callback, context) {};
+
+/**
+ * Synchronously retrieves the current authentication data.
+ *
+ * @return {Object} The client's authentication data.
  * @nosideeffects
  */
-angularFire.FirebaseAuth.prototype.$getAuth = function () {};
+angularFire.FirebaseAuth.prototype.$getAuth = function() {};
+
+/**
+ * Utility method which can be used in a route's resolve() method to require that a route has
+ * a logged in client.
+ *
+ * @returns {!angular.$q.Promise<Object>} A promise fulfilled with the client's current authentication
+ * state or rejected if the client is not authenticated.
+ */
+angularFire.FirebaseAuth.prototype.$requireSignIn = function() {};
+
+/**
+ * Utility method which can be used in a route's resolve() method to grab the current
+ * authentication data.
+ *
+ * @returns {!angular.$q.Promise<Object|null>} A promise fulfilled with the client's current authentication
+ * state, which will be null if the client is not authenticated.
+ */
+angularFire.FirebaseAuth.prototype.$waitForSignIn = function() {};
+
+/**
+ * Creates a new email/password user. Note that this function only creates the user, if you
+ * wish to log in as the newly created user, call $authWithPassword() after the promise for
+ * this method has been resolved.
+ *
+ * @param {string} email An email for this user.
+ * @param {string} password A password for this user.
+ * @return {!angular.$q.Promise<Object>} A promise fulfilled with the user object, which contains the
+ * uid of the created user.
+ */
+angularFire.FirebaseAuth.prototype.$createUserWithEmailAndPassword = function(email, password) {};
+
+/**
+ * Changes the password for an email/password user.
+ *
+ * @param {string} password A new password for the current user.
+ * @return {!angular.$q.Promise<null>} An empty promise fulfilled once the password change is complete.
+ */
+angularFire.FirebaseAuth.prototype.$updatePassword = function(password) {};
+
+/**
+ * Changes the email for an email/password user.
+ *
+ * @param {string} email The new email for the currently logged in user.
+ * @return {!angular.$q.Promise<null>} An empty promise fulfilled once the email change is complete.
+ */
+angularFire.FirebaseAuth.prototype.$updateEmail = function(email) {};
+
+/**
+ * Deletes the currently logged in user.
+ *
+ * @return {!angular.$q.Promise<null>} An empty promise fulfilled once the user is removed.
+ */
+angularFire.FirebaseAuth.prototype.$deleteUser = function() {};
 
 
 /**
- * @param {!function(Firebase.AuthCallbackData)} onComplete
- * @param {!Object=} context
- * @return {!function()}
+ * Sends a password reset email to an email/password user.
+ *
+ * @param {string} email An email address to send a password reset to.
+ * @return {!angular.$q.Promise<null>} An empty promise fulfilled once the reset password email is sent.
  */
-angularFire.FirebaseAuth.prototype.$onAuth = function (onComplete, context) {};
-
-
-/**
- * (No documentation necessary.)
- */
-angularFire.FirebaseAuth.prototype.$unauth = function () {};
-
-
-/**
- * @return {!angular.$q.Promise.<!Firebase.AuthCallbackData, !Firebase.Error>}
- */
-angularFire.FirebaseAuth.prototype.$waitForAuth = function () {};
-
-
-/**
- * @return {!angular.$q.Promise.<!Firebase.AuthCallbackData, !Firebase.Error>}
- */
-angularFire.FirebaseAuth.prototype.$requireAuth = function () {};
-
-
-/**
- * @param {!Firebase.AuthPasswordCredentials} credentials
- * @return {!angular.$q.Promise.<!{uid:string}, !Firebase.Error>}
- */
-angularFire.FirebaseAuth.prototype.$createUser = function (credentials) {};
-
-
-/**
- * @param {!{email:string, oldPassword:string, newPassword:string}} credentials
- * @return {!angular.$q.Promise.<null, !Firebase.Error>}
- */
-angularFire.FirebaseAuth.prototype.$changePassword = function (credentials) {};
-
-
-/**
- * @param {!{oldEmail:string, password:string, newEmail:string}} credentials
- * @return {!angular.$q.Promise.<null, !Firebase.Error>}
- */
-angularFire.FirebaseAuth.prototype.$changeEmail = function (credentials) {};
-
-
-/**
- * @param {!Firebase.AuthPasswordCredentials} credentials
- * @return {!angular.$q.Promise.<null, !Firebase.Error>}
- */
-angularFire.FirebaseAuth.prototype.$removeUser = function (credentials) {};
-
-
-/**
- * @param {!{email:string}} credentials
- * @return {!angular.$q.Promise.<null, !Firebase.Error>}
- */
-angularFire.FirebaseAuth.prototype.$resetPassword = function (credentials) {};
+angularFire.FirebaseAuth.prototype.$sendPasswordResetEmail = function(email) {};
