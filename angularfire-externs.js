@@ -13,14 +13,14 @@ var angularFire = {};
 
 
 /**
- * @typedef {function(!Firebase):!angularFire.FirebaseObject}
+ * @typedef {function(!firebase.database.Reference):!angularFire.FirebaseObject}
  */
 angularFire.$firebaseObject;
 
 
 /**
- * @param {(!Object|!function(new:angularFire.FirebaseObject, !Firebase))} propertiesOrConstructor
- * @return {!function(new:angularFire.FirebaseObject, !Firebase)}
+ * @param {(!Object|!function(new:angularFire.FirebaseObject, !firebase.database.Reference))} propertiesOrConstructor
+ * @return {!function(new:angularFire.FirebaseObject, !firebase.database.Reference)}
  */
 angularFire.$firebaseObject.$extend = function (propertiesOrConstructor) {};
 
@@ -29,7 +29,7 @@ angularFire.$firebaseObject.$extend = function (propertiesOrConstructor) {};
  * @constructor
  * @private
  */
-angularFire.FirebaseObject = function () {};
+angularFire.FirebaseObject = function (ref) {};
 
 
 /**
@@ -64,14 +64,14 @@ angularFire.FirebaseObject.prototype.$save = function () {};
 
 /**
  * @param {!function(!angularFire.FirebaseObject)=} resolve
- * @param {!function(!Firebase.Error)=} reject
+ * @param {!function(!firebase.FirebaseError)=} reject
  * @return {!angular.$q.Promise.<!angularFire.FirebaseObject>}
  */
 angularFire.FirebaseObject.prototype.$loaded = function (resolve, reject) {};
 
 
 /**
- * @return {!Firebase}
+ * @return {!firebase.database.Reference}
  */
 angularFire.FirebaseObject.prototype.$ref = function () {};
 
@@ -99,13 +99,13 @@ angularFire.FirebaseObject.prototype.$destroy = function () {};
 
 
 /**
- * @param {!Firebase.DataSnapshot} snapshot
+ * @param {!firebase.database.DataSnapshot} snapshot
  */
 angularFire.FirebaseObject.prototype.$$updated = function (snapshot) {};
 
 
 /**
- * @param {!Firebase.Error} error
+ * @param {!firebase.FirebaseError} error
  */
 angularFire.FirebaseObject.prototype.$$error = function (error) {};
 
@@ -123,7 +123,7 @@ angularFire.FirebaseObject.prototype.toJson = function () {};
 
 
 /**
- * @type {!Object.<string,Firebase.Value>}
+ * @type {!Object.<string,*>}
  */
 angularFire.FirebaseObject.prototype.$$defaults;
 
@@ -131,14 +131,14 @@ angularFire.FirebaseObject.prototype.$$defaults;
 
 
 /**
- * @typedef {function((!Firebase|!Firebase.Query)):!angularFire.FirebaseArray}
+ * @typedef {function((firebase.database.Reference|!firebase.database.Query)):!angularFire.FirebaseArray}
  */
 angularFire.$firebaseArray;
 
 
 /**
- * @param {(!Object|!function(new:angularFire.FirebaseArray, !Firebase))} propertiesOrConstructor
- * @return {!function(new:angularFire.FirebaseArray, !Firebase)}
+ * @param {(!Object|!function(new:angularFire.FirebaseArray, !firebase.database.Reference))} propertiesOrConstructor
+ * @return {!function(new:angularFire.FirebaseArray, !firebase.database.Reference)}
  */
 angularFire.$firebaseArray.$extend = function (propertiesOrConstructor) {};
 
@@ -152,22 +152,22 @@ angularFire.FirebaseArray = function () {};
 
 
 /**
- * @param {!Firebase.Value} newData
- * @return {!angular.$q.Promise.<!Firebase>}
+ * @param {*} newData
+ * @return {!angular.$q.Promise.<!firebase.database.Reference>}
  */
 angularFire.FirebaseArray.prototype.$add = function (newData) {};
 
 
 /**
  * @param {!angularFire.FirebaseObject|number} recordOrIndex
- * @return {!angular.$q.Promise.<!Firebase>}
+ * @return {!angular.$q.Promise.<!firebase.database.Reference>}
  */
 angularFire.FirebaseArray.prototype.$remove = function (recordOrIndex) {};
 
 
 /**
  * @param {!angularFire.FirebaseObject|number} recordOrIndex
- * @return {!angular.$q.Promise.<!Firebase>}
+ * @return {!angular.$q.Promise.<!firebase.database.Reference>}
  */
 angularFire.FirebaseArray.prototype.$save = function (recordOrIndex) {};
 
@@ -195,14 +195,14 @@ angularFire.FirebaseArray.prototype.$indexFor = function (key) {};
 
 /**
  * @param {!function(!angularFire.FirebaseArray)=} resolve
- * @param {!function(!Firebase.Error)=} reject
+ * @param {!function(!firebase.FirebaseError)=} reject
  * @return {!angular.$q.Promise.<!angularFire.FirebaseArray>}
  */
 angularFire.FirebaseArray.prototype.$loaded = function (resolve, reject) {};
 
 
 /**
- * @return {!Firebase}
+ * @return {!firebase.database.Reference}
  */
 angularFire.FirebaseArray.prototype.$ref = function () {};
 
@@ -222,33 +222,33 @@ angularFire.FirebaseArray.prototype.$destroy = function () {};
 
 
 /**
- * @param {!Firebase.DataSnapshot} snapshot
+ * @param {!firebase.database.DataSnapshot} snapshot
  * @param {?string} prevChild
  */
 angularFire.FirebaseArray.prototype.$$added = function (snapshot, prevChild) {};
 
 
 /**
- * @param {!Firebase.DataSnapshot} snapshot
+ * @param {!firebase.database.DataSnapshot} snapshot
  */
 angularFire.FirebaseArray.prototype.$$updated = function (snapshot) {};
 
 
 /**
- * @param {!Firebase.DataSnapshot} snapshot
+ * @param {!firebase.database.DataSnapshot} snapshot
  * @param {?string} prevChild
  */
 angularFire.FirebaseArray.prototype.$$moved = function (snapshot, prevChild) {};
 
 
 /**
- * @param {!Firebase.DataSnapshot} snapshot
+ * @param {!firebase.database.DataSnapshot} snapshot
  */
 angularFire.FirebaseArray.prototype.$$removed = function (snapshot) {};
 
 
 /**
- * @param {!Firebase.Error} error
+ * @param {!firebase.FirebaseError} error
  */
 angularFire.FirebaseArray.prototype.$$error = function (error) {};
 
@@ -276,7 +276,7 @@ angularFire.FirebaseArray.prototype.$$process = function (event, key, prevChild)
 
 
 /**
- * @type {!Object.<string,Firebase.Value>}
+ * @type {!Object.<string,*>}
  */
 angularFire.FirebaseArray.prototype.$$defaults;
 
