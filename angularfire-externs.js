@@ -284,7 +284,9 @@ angularFire.FirebaseArray.prototype.$$defaults;
 
 
 /**
- * @typedef {function():!angularFire.FirebaseAuth}
+ * This factory returns an object allowing you to manage the client's authentication state.
+ *
+ * @typedef {function(!firebase.auth.Auth=):!angularFire.FirebaseAuth}
  */
 angularFire.$firebaseAuth;
 
@@ -355,10 +357,10 @@ angularFire.FirebaseAuth.prototype.$signOut = function() {};
  * the authentication data changes. It also fires as soon as the authentication data is
  * retrieved from the server.
  *
- * @param {function()} callback A callback that fires when the client's authenticate state
+ * @param {function((Object|null))} callback A callback that fires when the client's authenticate state
  * changes. If authenticated, the callback will be passed an object containing authentication
  * data according to the provider used to authenticate. Otherwise, it will be passed null.
- * @param {string} [context] If provided, this object will be used as this when calling your
+ * @param {!Object=} [context] If provided, this object will be used as this when calling your
  * callback.
  * @return {function()} A promised fulfilled with a function which can be used to
  * deregister the provided callback.
@@ -407,7 +409,7 @@ angularFire.FirebaseAuth.prototype.$createUserWithEmailAndPassword = function(em
  * Changes the password for an email/password user.
  *
  * @param {string} password A new password for the current user.
- * @return {!angular.$q.Promise<null>} An empty promise fulfilled once the password change is complete.
+ * @return {!angular.$q.Promise} An empty promise fulfilled once the password change is complete.
  */
 angularFire.FirebaseAuth.prototype.$updatePassword = function(password) {};
 
@@ -415,14 +417,14 @@ angularFire.FirebaseAuth.prototype.$updatePassword = function(password) {};
  * Changes the email for an email/password user.
  *
  * @param {string} email The new email for the currently logged in user.
- * @return {!angular.$q.Promise<null>} An empty promise fulfilled once the email change is complete.
+ * @return {!angular.$q.Promise} An empty promise fulfilled once the email change is complete.
  */
 angularFire.FirebaseAuth.prototype.$updateEmail = function(email) {};
 
 /**
  * Deletes the currently logged in user.
  *
- * @return {!angular.$q.Promise<null>} An empty promise fulfilled once the user is removed.
+ * @return {!angular.$q.Promise} An empty promise fulfilled once the user is removed.
  */
 angularFire.FirebaseAuth.prototype.$deleteUser = function() {};
 
@@ -431,6 +433,6 @@ angularFire.FirebaseAuth.prototype.$deleteUser = function() {};
  * Sends a password reset email to an email/password user.
  *
  * @param {string} email An email address to send a password reset to.
- * @return {!angular.$q.Promise<null>} An empty promise fulfilled once the reset password email is sent.
+ * @return {!angular.$q.Promise} An empty promise fulfilled once the reset password email is sent.
  */
 angularFire.FirebaseAuth.prototype.$sendPasswordResetEmail = function(email) {};
